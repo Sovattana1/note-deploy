@@ -26,16 +26,28 @@ class DiaryManager {
 
     // Load existing diary entries from localStorage
     showNotes() {
-        const storedNotes = localStorage.getItem("notes");
-        if (storedNotes) {
-            this.diaryContainer.innerHTML = storedNotes;
-            this.addEventListenersToDiaryEntries(); // Add event listeners to existing diary entries
+        let storedNotes = localStorage.getItem("notes");
+        if (!storedNotes) {
+            storedNotes = [];
+        } else {
+            try {
+                storedNotes = JSON.parse(storedNotes);
+            } catch (error) {
+                console.error("Error parsing JSON from localStorage:", error);
+                storedNotes = []; // Fallback to empty array if parsing fails
+            }
         }
+        storedNotes.forEach(note => this.addDiaryEntryFromStorage(note));
     }
 
     // Update localStorage with current diary entries
     updateStorage() {
-        localStorage.setItem("notes", this.diaryContainer.innerHTML);
+        const notes = Array.from(this.diaryContainer.children).map(diaryEntry => ({
+            title: diaryEntry.querySelector(".title-desktop").textContent.trim(),
+            date: diaryEntry.querySelector(".date-grit-desktop").textContent.trim(),
+            content: diaryEntry.querySelector(".display-diary").textContent.trim()
+        }));
+        localStorage.setItem("notes", JSON.stringify(notes));
     }
 
     // Add a new diary entry to the UI and initialize event listeners
@@ -44,15 +56,14 @@ class DiaryManager {
         newDiaryEntry.classList.add('diary-container'); // add class to the element
         newDiaryEntry.innerHTML = `
             <div class="diary-header">
-                <p contenteditable="false" class="title-desktop" id="title-desktop-diary">Title</p>
-                <p contenteditable="false" class="date-grit-desktop" id="date-desktop-diary">dd/mm/yyyy</p>
+                <p contenteditable="true" class="title-desktop" id="title-desktop-diary">Title</p>
+                <p contenteditable="true" class="date-grit-desktop" id="date-desktop-diary">dd/mm/yyyy</p>
             </div>
-            <p contenteditable="false" class="display-diary">
-                <div class="diary-icon">
-                    <img src="./public/diary_icon/bin.png" draggable="false" class="delete-btn">
-                    <img src="./public/diary_icon/edit-246-32.png" draggable="false" class="edit-btn">
-                </div>
-            </p>
+            <p contenteditable="true" class="display-diary"></p>
+            <div class="diary-icon">
+                <img src="./public/diary_icon/bin.png" draggable="false" class="delete-btn">
+                <img src="./public/diary_icon/edit-246-32.png" draggable="false" class="edit-btn">
+            </div>
         `;
         this.diaryContainer.appendChild(newDiaryEntry); //appendChild (new diary) to the diaryContainer
 
@@ -89,6 +100,53 @@ class DiaryManager {
         return newDiaryEntry; // Return the new diary entry DOM element
     }
 
+    // Add diary entry from localStorage
+    addDiaryEntryFromStorage(note) {
+        let newDiaryEntry = document.createElement("div"); //create new div element 
+        newDiaryEntry.classList.add('diary-container'); // add class to the element
+        newDiaryEntry.innerHTML = `
+            <div class="diary-header">
+                <p contenteditable="true" class="title-desktop" id="title-desktop-diary">${note.title}</p>
+                <p contenteditable="true" class="date-grit-desktop" id="date-desktop-diary">${note.date}</p>
+            </div>
+            <p contenteditable="true" class="display-diary">${note.content}</p>
+            <div class="diary-icon">
+                <img src="./public/diary_icon/bin.png" draggable="false" class="delete-btn">
+                <img src="./public/diary_icon/edit-246-32.png" draggable="false" class="edit-btn">
+            </div>
+        `;
+        this.diaryContainer.appendChild(newDiaryEntry); //appendChild (new diary) to the diaryContainer
+
+        // Event listener for opening edit modal on diary container click
+        newDiaryEntry.addEventListener("click", (e) => {
+            if (e.target.classList.contains('delete-btn') || e.target.classList.contains('edit-btn')) {
+                return; // Do nothing if delete or edit button is clicked
+            }
+            const openModalDiary = new EditDiaryPopup(newDiaryEntry, this);
+            openModalDiary.openModal();
+        });
+
+        // Initialize the edit popup for the new diary entry
+        const editButton = newDiaryEntry.querySelector('.edit-btn'); //select edit button from newDiaryEntry in the same function
+        editButton.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent triggering the parent click event
+            const modal = new EditDiaryPopup(newDiaryEntry, this); //call class when edit button is clicked
+            modal.openModal(); //open diary modal
+        });
+
+        // Event listener for deleting the diary entry
+        const deleteBtn = newDiaryEntry.querySelector('.delete-btn'); //select delete button from newDiaryEntry in the same function
+        deleteBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent triggering the parent click event
+            this.removeDiaryEntryWithAnimation(newDiaryEntry); //remove diary entry from the UI with animation
+        });
+
+        // Event listener for updating storage when content is edited
+        newDiaryEntry.addEventListener("input", () => {
+            this.updateStorage();
+        });
+    }
+
     // Remove diary entry with animation
     removeDiaryEntryWithAnimation(diaryEntry) {
         diaryEntry.classList.add('removing'); // Add class to trigger CSS transition
@@ -102,42 +160,6 @@ class DiaryManager {
     showWhenClickOnPlus(newDiaryEntry) {
         const modal = new EditDiaryPopup(newDiaryEntry, this);
         modal.openModal();
-    }
-
-    // Add event listeners to existing diary entries for edit and delete buttons
-    addEventListenersToDiaryEntries() {
-        // Event listener for edit button on existing diary entries
-        const editButtons = this.diaryContainer.querySelectorAll('.edit-btn'); //select element from diary container
-        editButtons.forEach(editButton => { //work on every existed diary
-            editButton.addEventListener("click", (e) => {
-                e.stopPropagation(); // Prevent triggering the parent click event
-                const diaryEntry = editButton.closest('.diary-container'); //select the closest diary element
-                const modal = new EditDiaryPopup(diaryEntry, this); //call EditDiary class for funtionality
-                modal.openModal(); //open edit modal
-            });
-        });
-
-        // Event listener for delete button on existing diary entries
-        const deleteButtons = this.diaryContainer.querySelectorAll('.delete-btn');
-        deleteButtons.forEach(deleteBtn => {
-            deleteBtn.addEventListener("click", (e) => {
-                e.stopPropagation(); // Prevent triggering the parent click event
-                const diaryEntry = deleteBtn.closest('.diary-container');
-                this.removeDiaryEntryWithAnimation(diaryEntry); //remove diary entry from the UI with animation
-            });
-        });
-
-        // Event listener for opening edit modal on diary container click
-        const diaryContainers = this.diaryContainer.querySelectorAll('.diary-container');
-        diaryContainers.forEach(diaryContainer => {
-            diaryContainer.addEventListener("click", (e) => {
-                if (e.target.classList.contains('delete-btn') || e.target.classList.contains('edit-btn')) {
-                    return; // Do nothing if delete or edit button is clicked
-                }
-                const openModalDiary = new EditDiaryPopup(diaryContainer, this);
-                openModalDiary.openModal();
-            });
-        });
     }
 
     // Handle Enter key press to insert line break
@@ -175,25 +197,17 @@ class EditDiaryPopup {
             <div class="diary-header-modal">
                 <div class="header-modal-background">
                     <div class="left-side-of-header">
-                        <p contenteditable="true" class="title-desktop" id="title-desktop-diary-modal">Title</p>
+                        <p contenteditable="true" class="title-desktop" id="title-desktop-diary-modal">${this.diaryEntry.querySelector(".title-desktop").textContent}</p>
                         <div class="date-time">
                             <p id="date">Date: </p>
-                            <input type="date" id="date-desktop-diary-modal" class="date-grit-desktop">
+                            <input type="date" id="date-desktop-diary-modal" class="date-grit-desktop" value="${this.formatDateForInput(new Date(this.diaryEntry.querySelector(".date-grit-desktop").textContent.trim()))}">
                         </div>
                     </div>
                     <div class="submit-done">Done</div>
                 </div>
             </div>
-            <p contenteditable="true" class="display-diary-modal"></p>
+            <p contenteditable="true" class="display-diary-modal">${this.diaryEntry.querySelector(".display-diary").textContent}</p>
         `;
-
-        // Fill modal fields with current diary entry data
-        const title = this.diaryEntry.querySelector(".title-desktop").textContent.trim();
-        const date = this.diaryEntry.querySelector(".date-grit-desktop").textContent.trim();
-        const content = this.diaryEntry.querySelector(".display-diary").textContent.trim();
-        modalContainer.querySelector(".title-desktop").textContent = title;
-        modalContainer.querySelector(".date-grit-desktop").value = this.formatDateForInput(new Date(date));
-        modalContainer.querySelector(".display-diary-modal").textContent = content;
 
         // Event listener for 'Done' button to save changes
         const submitButton = modalContainer.querySelector(".submit-done");

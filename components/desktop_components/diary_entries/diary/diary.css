@@ -18,6 +18,7 @@
 	margin-top: 200px; /* Top margin (adjust as needed) */
 	margin-left: 500px; /* Additional left margin (adjust as needed) */
 	grid-template-columns: repeat(3, 1fr); /* Grid with 3 equal columns */
+	
 }
 
 /* Styles for the diary entry background color */
