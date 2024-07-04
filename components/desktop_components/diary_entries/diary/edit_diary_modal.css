@@ -1,0 +1,98 @@
+/* Styling for the edit modal container */
+.edit-modal-container {
+	position: fixed; /* Fixed position to cover the entire viewport */
+	top: 0; /* Aligns to the top of the viewport */
+	width: 100%; /* Full width of the viewport */
+	height: 100%; /* Full height of the viewport */
+	z-index: 1000; /* Ensures the modal is on top of other elements */
+	background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+	backdrop-filter: blur(60px); /* Blur effect behind the modal */
+}
+
+/* Styling for the grid overlay inside the modal */
+.grid-overlay {
+	position: absolute; /* Absolute positioning for precise placement */
+	top: 50%; /* Moves the grid to the vertical center */
+	left: 50%; /* Moves the grid to the horizontal center */
+	transform: translate(-50%, -50%); /* Centers the grid precisely */
+	width: 1134px; /* Fixed width of the grid container */
+	margin: 0 auto; /* Centers the element horizontally */
+}
+
+/* Styling for the header background within the modal */
+.header-modal-background {
+	display: flex; /* Flexbox for layout control */
+	justify-content: space-between; /* Space between elements in the header */
+	width: 1134px; /* Fixed width of the header background */
+	height: 73px; /* Fixed height of the header background */
+	background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent black background */
+	backdrop-filter: blur(60px); /* Blur effect for the background */
+	border-radius: 30px; /* Rounded corners */
+}
+
+/* Styling for the 'Done' button in the modal */
+.submit-done {
+	margin-right: 50px; /* Right margin */
+	margin-top: 25px; /* Top margin */
+	cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Styling for the date and time section in the modal */
+.date-time {
+	display: flex; /* Flexbox for layout control */
+	margin-left: 50px; /* Left margin */
+}
+
+/* Styling for the date label in the modal */
+#date {
+	font-size: 20px; /* Font size */
+}
+
+/* Styling for the title field in the modal */
+#title-desktop-diary-modal {
+	margin-left: 47px; /* Left margin */
+	margin-top: 5px; /* Top margin */
+	font-weight: 100; /* Lighter font weight */
+}
+
+/* Styling for the main content area in the modal */
+.display-diary-modal {
+	width: 1134px; /* Fixed width of the content area */
+	height: 534px; /* Fixed height of the content area */
+	padding-top: 20px; /* Top padding */
+	padding-left: 20px; /* Left padding */
+	background-color: rgba(217, 217, 217, 1); /* Light gray background */
+	border-radius: 30px; /* Rounded corners */
+	color: black; /* Text color */
+	overflow-y: auto; /* Enable vertical scrollbar if content exceeds height */
+	white-space: pre-wrap; /* Preserves formatting (like line breaks) */
+	outline: none; /* Remove default outline */
+}
+
+/* Styling for the scrollbar in the content area */
+.display-diary-modal::-webkit-scrollbar {
+	width: 10px; /* Width of the scrollbar */
+}
+
+/* Styling for the thumb of the scrollbar */
+.display-diary-modal::-webkit-scrollbar-thumb {
+	background-color: rgba(0, 0, 0, 0.2); /* Color of the thumb */
+	border-radius: 10px; /* Rounded corners of the thumb */
+}
+/* Styles for the date input inside the modal */
+#date-desktop-diary-modal {
+    background-color: transparent; /* Make the background transparent */
+    border: none; /* Remove default border */
+    color: white; /* Text color */
+    font-size: 20px; /* Font size */
+    width: 150px; /* Adjust width as needed */
+    appearance: none; /* Remove default appearance */
+    -webkit-appearance: none; /* Remove default appearance for WebKit (Safari, Chrome, etc.) */
+    padding: 0; /* Remove padding to prevent extra space */
+}
+
+/* Optional: Custom styles for the input when focused */
+#date-desktop-diary-modal:focus {
+    outline: none; /* Remove default focus outline */
+    box-shadow: none; /* Remove default focus box shadow */
+}

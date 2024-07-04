@@ -1,0 +1,29 @@
+/* Apply box-sizing border-box model to all elements */
+*,
+body,
+::before,
+::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set basic styles for the body */
+body {
+    height: 100vh; /* Full height of the viewport */
+    width: 100%; /* Full width of the viewport */
+}   
+
+/* Styles for the background picture */
+
+#background-pic{
+    position: fixed;
+    z-index: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    object-fit: cover;
+    pointer-events: none;
+}
+

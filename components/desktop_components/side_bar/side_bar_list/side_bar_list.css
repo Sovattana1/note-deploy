@@ -1,0 +1,6 @@
+.list_side_bar li {
+	margin-top: 15px; /* Top margin */
+	margin-left: 40px; /* Left margin */
+	list-style-type: none; /* Remove default list bullet */
+	cursor: pointer; /* Pointer cursor on hover */
+}

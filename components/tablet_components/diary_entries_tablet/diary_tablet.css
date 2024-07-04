@@ -1,0 +1,67 @@
+@import url("/components/tablet_components/diary_entries_tablet/edit_diary_tablet_modal.css");
+
+@media (max-width:1025px){
+	.diary-entries-grid-wrapper {
+		display: flex;
+		margin: 0 auto; /* Center the grid wrapper horizontally */
+		max-width: 1010px; /* Maximum width of the grid wrapper */
+		justify-content: center;
+	}
+	.diary-entries-grid {/* Styles for the diary entries grid */
+		display: grid;
+		row-gap: 19px; /* Gap between rows */
+		column-gap: 24px; /* Gap between columns */
+		max-width: 1010px; /* Maximum width of the grid */
+		margin-top: 100px; /* Top margin (adjust as needed) */
+		margin-left: 100px; /* Additional left margin (adjust as needed) */
+		grid-template-columns: repeat(2, 1fr); /* Grid with 2 equal columns */
+	}
+	.diary-container{/* diary background */
+		width: 280px; /* Fixed width */
+		height: 145px; /* Fixed height */
+		cursor: pointer;
+		border-radius: 10px; /* Rounded corners */
+		backdrop-filter: blur(60px); /* Blur effect for modern browsers */
+		background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent black background */
+		border: 1px solid rgba(68, 68, 68, 0.1); /* Border color and transparency */
+		box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25) ;
+	}
+	.display-diary {
+		height: 89px; /* Fixed height */
+		width: 263px; /* Fixed width */
+		outline: none;
+		color: black;
+		overflow: hidden;
+		margin-top: 5px;
+		margin-left: 10px; /* Left margin */
+		border-radius: 10px; /* Rounded corners */
+		background-color: rgba(217, 217, 217, 1); /* Light gray background */
+	}
+	#date-desktop-diary {
+		margin-top: 15px; /* Top margin */
+		padding-left:0px; /* Left padding */
+		overflow: hidden;
+		white-space: nowrap; /* Prevent wrapping */
+		padding-right: 10px;/* Right padding*/
+		padding-bottom: 5px;
+		text-overflow: ellipsis; /* Display ellipsis for overflow */
+	}
+	#title-desktop-diary {
+		width: 100px;
+		font-weight: 500;
+		margin-left: 9px; /* Left margin */
+		margin-top: 14px; /* Top margin */
+		overflow: hidden;
+		white-space: nowrap; /* Prevent wrapping */
+		text-overflow: ellipsis; /* Display ellipsis for overflow */
+	}
+	.title-desktop{
+		font-size: 15px;
+		font-weight: 800;
+	}
+	.date-grit-desktop{
+		font-size: 15px;
+	}
+}
+
+	

@@ -1,0 +1,19 @@
+/* style btn */
+.add-diary-mobile{
+	background-color: white; /* set background */
+	height: 50px; /* fixed width  */
+	width: 50px; /* fixed height */
+	z-index: 1;/* set 1 above background img  */
+	position: fixed;/* position stay still in one place */
+	right: 11px; /* posiiton to the rihgt of the screen */
+	bottom: 30px; /* position  to the bottom of the screen */
+	border-radius: 50px; /* make it round */
+	border: none; /* clear border  */
+	display: none;
+}
+
+@media (max-width:767px) {
+	.add-diary-mobile{
+		display: block;/* display the add button on the screen */
+	}
+}

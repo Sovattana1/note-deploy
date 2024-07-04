@@ -1,0 +1,112 @@
+@media (max-width:767px) {
+	/* Styles for the edit modal container */
+	.edit-modal-container {
+		z-index: 1000; /* Set stacking order */
+		position: fixed; /* Fixed position */
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		top: 0; /* Align to the top */
+		background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+		backdrop-filter: blur(10px); /* Blur effect */
+	}
+
+	/* Styles for the grid overlay within the edit modal */
+	.grid-overlay {
+		margin: 0 auto; /* Centers the element horizontally */
+		width: 300px; /* Adjust the width as per your layout */
+		position: absolute; /* Absolute positioning */
+		top: 50%; /* Align to the vertical center */
+		left: 50%; /* Align to the horizontal center */
+		transform: translate(-50%, -50%); /* Center the element */
+	}
+
+	/* Styles for the modal header background */
+	.header-modal-background {
+		height: 82px; /* Fixed height */
+		width: 313px; /* Fixed width */
+		border-radius: 30px; /* Rounded corners */
+		background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent black background */
+		backdrop-filter: blur(60px); /* Blur effect */
+		display: flex; /* Flexbox layout */
+		justify-content: space-between; /* Space between elements */
+	}
+
+	/* Placeholder styles for inputs */
+	::placeholder {
+		color: white; /* Fallback for browsers that do not support the above pseudo-elements */
+	}
+
+	/* Placeholder styles for date-time input */
+	.date-time input::placeholder {
+		font-size: 20px; /* Font size */
+		color: rgba(68, 68, 68, 1); /* Text color */
+	}
+
+	/* Styles for the submit button */
+	.submit-done {
+		margin-top: 32px; /* Top margin */
+		margin-right: 20px; /* Right margin */
+		cursor: pointer; /* Pointer cursor */
+		font-size: 20px; /* Font size */
+	}
+
+	/* Styles for the date-time container */
+	.date-time {
+		display: flex; /* Flexbox layout */
+		margin-left: 17px; /* Left margin */
+		margin-top: 5px; /* Top margin */
+	}
+
+	/* Styles for the date element */
+	#date {
+		font-size: 20px; /* Font size */
+	}
+
+	/* Styles for the title within the modal */
+	#title-desktop-diary-modal {
+		font-size: 20px; /* Font size */
+		margin-left: 16px; /* Left margin */
+		margin-top: 5px; /* Top margin */
+		font-weight: 100; /* Light font weight */
+	}
+
+	/* Common styles for title and date elements within the modal */
+	#title-desktop-diary-modal,
+	#date-desktop-diary-modal {
+		background: transparent; /* Transparent background */
+		border: none; /* No border */
+		color: white; /* Text color */
+		margin-top: 2px; /* Top margin */
+		outline: none; /* No outline */
+	}
+
+	/* Styles for the content display within the modal */
+	.display-diary-modal {
+		width: 313px; /* Fixed width */
+		height: 452px; /* Fixed height */
+		padding-left: 20px; /* Left padding */
+		padding-top: 20px; /* Top padding */
+		background-color: rgba(217, 217, 217, 1); /* Light gray background */
+		border-radius: 30px; /* Rounded corners */
+		color: black; /* Text color */
+		overflow-y: auto; /* Enable vertical scrollbar if needed */
+		white-space: pre-wrap; /* Preserve line breaks */
+		outline: none; /* No outline */
+	}
+
+	/* Styles for the scrollbar within the modal */
+	.display-diary-modal::-webkit-scrollbar {
+		width: 10px; /* Width of scrollbar */
+	}
+
+	/* Styles for the scrollbar thumb within the modal */
+	.display-diary-modal::-webkit-scrollbar-thumb {
+		background-color: rgba(0, 0, 0, 0.2); /* Color of the thumb */
+		border-radius: 10px; /* Rounded corners of the thumb */
+	}
+
+	/* Additional styles for elements within the modal header */
+	.left-side-of-header {
+		margin-top: 10px; /* Top margin */
+	}
+}

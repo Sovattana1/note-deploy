@@ -1,0 +1,20 @@
+
+
+/* Styles for the mobile sidebar icon */
+#icon-side-bar-mobile {
+	display: none; /* Initially hidden on larger screens */
+	height: 38px; /* Fixed height of the sidebar icon */
+}
+
+/* Styles for the header background */
+.header-background {
+	display: flex; /* Flexbox for layout control */
+	height: 45px; /* Fixed height of the header */
+	width: 100%; /* Full width of the viewport */
+	background-color: rgba(0, 0, 0, 0.10); /* Semi-transparent black background */
+	box-shadow: 0 6px 6px rgba(0, 0, 0, 0.10); /* Shadow for a lifted appearance */
+	backdrop-filter: blur(60px); /* Blur effect behind the header */
+	position: fixed; /* Fixed position to stay at the top */
+	z-index: 999; /* Ensures it's above other content */
+	pointer-events: none; /* Allows clicks to pass through (optional) */
+}

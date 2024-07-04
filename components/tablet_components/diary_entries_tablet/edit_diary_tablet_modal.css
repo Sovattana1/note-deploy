@@ -1,0 +1,93 @@
+@media (max-width:1025px) {
+	.edit-modal-container {
+		background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent white background */
+		backdrop-filter: blur(60px); /* Blur effect for modern browsers */
+		z-index: 1000; /* Z-index for stacking order */
+		position: fixed; /* Fixed positioning */
+		width: 100%; /* Full width */
+		height: 100%; /* Full height */
+		top: 0; /* Align to the top of the viewport */
+	}
+	
+	.grid-overlay {
+		margin: 0 auto; /* Centers the element horizontally */
+		width: 500px; /* Width of the grid overlay */
+		position: absolute; /* Absolute positioning */
+		top: 50%; /* Center vertically */
+		left: 50%; /* Center horizontally */
+		transform: translate(-50%, -50%); /* Center the element */
+	}
+	
+	.header-modal-background {
+		width: 500px; /* Width of the modal header */
+		height: 90px; /* Height of the modal header */
+		background-color: rgba(0, 0, 0, 0.25); /* Semi-transparent black background */
+		backdrop-filter: blur(60px); /* Blur effect for modern browsers */
+		border-radius: 30px; /* Rounded corners */
+		display: flex; /* Flexbox layout */
+		justify-content: space-between; /* Space between elements */
+	}
+	
+	.submit-done {
+		margin-top: 32px; /* Top margin */
+		margin-right: 20px; /* Right margin */
+		cursor: pointer; /* Pointer cursor */
+		font-size: 20px; /* Font size of the text */
+	}
+	
+	.date-time {
+		display: flex; /* Flexbox layout */
+		margin-left: 50px; /* Left margin */
+		margin-top: 5px; /* Top margin */
+	}
+	
+	#date {
+		font-size: 20px; /* Font size of the date */
+	}
+	
+	#title-desktop-diary-modal {
+		margin-left: 16px; /* Left margin */
+		font-weight: 100; /* Font weight of the title */
+		margin-top: 5px; /* Top margin */
+		font-size: 20px; /* Font size of the title */
+	}
+	
+	.date-time {
+		margin-left: 17px; /* Left margin */
+	}
+	
+	#title-desktop-diary-modal,
+	#date-desktop-diary-modal {
+		border: none; /* No border */
+		background: transparent; /* Transparent background */
+		outline: none; /* No outline */
+		color: white; /* White text color */
+		margin-top: 2px; /* Top margin */
+	}
+	
+	.display-diary-modal {
+		height: 697px; /* Fixed height */
+		width: 500px; /* Fixed width */
+		background-color: rgba(217, 217, 217, 1); /* Light gray background */
+		border-radius: 30px; /* Rounded corners */
+		outline: none; /* No outline */
+		color: black; /* Text color */
+		padding-left: 20px; /* Left padding */
+		padding-top: 20px; /* Top padding */
+		overflow-y: auto; /* Vertical scroll for overflow */
+		white-space: pre-wrap; /* Preserve whitespace */
+	}
+	
+	.display-diary-modal::-webkit-scrollbar {
+		width: 10px; /* Width of the scrollbar */
+	}
+	
+	.display-diary-modal::-webkit-scrollbar-thumb {
+		background-color: rgba(0, 0, 0, 0.2); /* Color of the scrollbar thumb */
+		border-radius: 10px; /* Rounded corners of the scrollbar thumb */
+	}
+	
+	.left-side-of-header {
+		margin-top: 10px; /* Top margin */
+	}
+}

@@ -1,0 +1,39 @@
+/* Apply 'Inter' font family to all text */
+* {
+	font-family: 'Inter', sans-serif;
+	color: white; /* Text color */
+}
+
+/* Styles for elements with class 'add-note-list-and-grid-view' */
+.add-note-list-and-grid-view {
+	font-size: 20px; /* Font size */
+	text-shadow: 6px 6px 3.6px rgba(0, 0, 0, 0.25); /* Text shadow */
+}
+
+/* Styles for desktop header text */
+.header-text-desktop {
+	flex-grow: 1; /* Grow to fill available space */
+	display: flex; /* Flexbox layout */
+	font-size: 25px; /* Font size */
+	font-weight: 800; /* Font weight */
+	padding-top: 5px; /* Top padding */
+	letter-spacing: 0.2rem; /* Letter spacing */
+	justify-content: center; /* Center horizontally */
+}
+
+/* Styles for desktop titles */
+.title-desktop {
+	font-size: 25px; /* Font size */
+	font-weight: 800; /* Font weight */
+}
+
+/* Styles for desktop dates in grid view */
+.date-grit-desktop,
+.date-list-view {
+	font-size: 20px; /* Font size */
+}
+
+/* Styles for desktop list view titles */
+.title-list-desktop {
+	font-size: 30px; /* Font size */
+}

@@ -1,0 +1,11 @@
+/* side bar background */
+.side-bar-background{
+	width: 185px; /* Fixed width */
+	height: 100%; /* Full height of the viewport */
+	z-index: 1000; /* Higher stacking order */
+	position: fixed; /* Fixed position */
+	position: absolute; /* Absolutely positioned */
+	backdrop-filter: blur(60px); /* Blur effect for modern browsers */
+	background-color: rgba(0, 0, 0, 0.20); /* Semi-transparent black background */
+	box-shadow: 0 6px 6px rgba(0, 0, 0, 0.10); /* Shadow effect */
+}

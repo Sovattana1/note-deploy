@@ -1,0 +1,77 @@
+@media (max-width: 767px) {
+	/* Styles for the diary entries grid wrapper */
+	.diary-entries-grid-wrapper {
+		display: flex; /* Flexbox layout */
+		margin: 0 auto; /* Center the grid wrapper horizontally */
+		max-width: 1010px; /* Maximum width of the grid wrapper */
+		justify-content: center; /* Center content horizontally */
+	}
+
+	/* Styles for the diary entries grid */
+	.diary-entries-grid {
+		gap: 20px; /* Uniform gap between rows and columns */
+		display: grid; /* Grid layout */
+		max-width: 1010px; /* Maximum width of the grid */
+		margin: 100px auto 0; /* Center the grid and add top margin */
+		grid-template-columns: repeat(2, 1fr); /* Grid with 2 equal columns */
+	}
+
+	/* Styles for each diary container */
+	.diary-container {
+		width: 150px; /* Fixed width */
+		height: 259px; /* Fixed height */
+		cursor: pointer; /* Pointer cursor on hover */
+		border-radius: 10px; /* Rounded corners */
+		backdrop-filter: blur(60px); /* Blur effect for modern browsers */
+		border: 1px solid rgba(68, 68, 68, 0.1); /* Border color and transparency */
+		background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent black background */
+		box-shadow: 6px 7px 4px rgba(0, 0, 0, 0.25); /* Box shadow */
+	}
+
+	/* Styles for the display diary section */
+	.display-diary {
+		width: 139px; /* Fixed width */
+		height: 201px; /* Fixed height */
+		outline: none; /* No outline */
+		color: black; /* Text color */
+		margin-top: 15px; /* Top margin */
+		margin-left: 5px; /* Left margin */
+		overflow: hidden; /* Hide overflow content */
+		border-radius: 10px; /* Rounded corners */
+		background-color: rgba(217, 217, 217, 1); /* Light gray background */
+	}
+
+	/* Styles for the date inside the diary header */
+	#date-desktop-diary {
+		font-size: 9px; /* Font size */
+		padding-left: 0; /* Left padding */
+		overflow: hidden; /* Hide overflow content */
+		margin-top: 15px; /* Top margin */
+		padding-right: 10px; /* Right padding */
+		white-space: nowrap; /* Prevent wrapping */
+		padding-bottom: 5px; /* Bottom padding */
+		text-overflow: ellipsis; /* Display ellipsis for overflow */
+	}
+
+	/* Styles for the title inside the diary header */
+	#title-desktop-diary {
+		width: 50px; /* Fixed width */
+		font-weight: 400; /* Normal font weight */
+		margin-top: 14px; /* Top margin */
+		margin-left: 9px; /* Left margin */
+		overflow: hidden; /* Hide overflow content */
+		white-space: nowrap; /* Prevent wrapping */
+		text-overflow: ellipsis; /* Display ellipsis for overflow */
+	}
+
+	/* Styles for the title desktop */
+	.title-desktop {
+		font-size: 15px; /* Font size */
+		font-weight: 800; /* Bold font weight */
+	}
+
+	/* Styles for the date grit desktop */
+	.date-grit-desktop {
+		font-size: 15px; /* Font size */
+	}
+}

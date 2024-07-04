@@ -1,0 +1,31 @@
+@import url("/components/mobile_components/diary_entries_mobile/diary_entries_mobile.css");
+@import url("/components/mobile_components/diary_entries_mobile/diary_entries_mobile_modal.css");
+@media (max-width: 767px) {
+	.side-bar {
+		display: none; /* Hide the sidebar */
+	}
+	
+	.header-background {
+		height: 34px; /* Set the height of the header background */
+		display: flex; /* Flexbox layout */
+		align-items: center; /* Center items vertically */
+		justify-content: center; /* Center items horizontally */
+		position: fixed; /* Fixed positioning */
+	}
+	
+	#header-text-mobile {
+		font-size: 25px; /* Font size of the header text */
+		font-weight: 800; /* Bold font weight */
+		letter-spacing: 0.2rem; /* Letter spacing */
+		margin-left: 23px; /* Left margin */
+		color: white; /* White text color */
+	}
+	
+	#icon-side-bar-mobile {
+		display: flex; /* Flexbox layout */
+		position: absolute; /* Absolute positioning */
+		left: 30px; /* Left position of the icon */
+		transform: rotateY(180deg); /* Rotate icon 180 degrees */
+		pointer-events: none; /* Disable pointer events */
+	}
+}

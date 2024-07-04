@@ -1,0 +1,6 @@
+#icon-side-bar {
+	height: 100px; /* Set the height of the icon */
+	transform: rotateY(180deg); /* Rotate the icon 180 degrees along the Y-axis */
+	margin-left: 20px; /* Left margin */
+	pointer-events: none; /* Disable pointer events */
+}

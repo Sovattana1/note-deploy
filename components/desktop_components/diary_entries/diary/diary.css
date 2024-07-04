@@ -1,0 +1,99 @@
+@import url('./edit_diary_modal.css');
+
+
+/* Styles for the diary entries grid wrapper */
+.diary-entries-grid-wrapper {
+	display: flex;
+	margin: 0 auto; /* Center the grid wrapper horizontally */
+	max-width: 1010px; /* Maximum width of the grid wrapper */
+	justify-content: center;
+}
+
+/* Styles for the diary entries grid */
+.diary-entries-grid {
+	display: grid;
+	row-gap: 22px; /* Gap between rows */
+	column-gap: 46px; /* Gap between columns */
+	max-width: 1010px; /* Maximum width of the grid */
+	margin-top: 200px; /* Top margin (adjust as needed) */
+	margin-left: 500px; /* Additional left margin (adjust as needed) */
+	grid-template-columns: repeat(3, 1fr); /* Grid with 3 equal columns */
+}
+
+/* Styles for the diary entry background color */
+.diary-container {
+	width: 309px; /* Fixed width */
+	height: 179px; /* Fixed height */
+	cursor: pointer;
+	border-radius: 10px; /* Rounded corners */
+	backdrop-filter: blur(60px); /* Blur effect for modern browsers */
+	background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent black background */
+	border: 1px solid rgba(68, 68, 68, 0.1); /* Border color and transparency */
+	box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25) ;
+}
+
+/* Styles for the title inside the diary header */
+#title-desktop-diary {
+	width: 80px;
+	overflow: hidden;
+	margin-left: 9px; /* Left margin */
+	margin-top: 14px; /* Top margin */
+	white-space: nowrap; /* Prevent wrapping */
+	text-overflow: ellipsis; /* Display ellipsis for overflow */
+}
+
+
+/* Styles for the date inside the diary header */
+#date-desktop-diary {
+	margin-top: 18px; /* Top margin */
+	overflow: hidden;
+	padding-left: 80px; /* Left padding */
+	padding-right: 10px;/* Right padding*/
+	white-space: nowrap; /* Prevent wrapping */
+	text-overflow: ellipsis; /* Display ellipsis for overflow */
+}
+
+/* Styles for the diary header */
+.diary-header {
+	display: flex; /* Flexbox layout */
+	justify-content: space-between; /* Space between elements */
+}
+
+/* Styles for the display diary section */
+.display-diary {
+	width: 286px; /* Fixed width */
+	height: 126px; /* Fixed height */
+	color: black;
+	outline: none;
+	overflow: hidden;
+	margin-left: 10px; /* Left margin */
+	border-radius: 10px; /* Rounded corners */
+	background-color: rgba(217, 217, 217, 1); /* Light gray background */
+	padding-left: 5px;
+	padding-top: 5px;
+}
+
+/* Styles for the diary icon container */
+.diary-icon {
+	right: 15px; /* Positioned 15px from the right */
+	bottom: 10px; /* Positioned 10px from the bottom */
+	position: absolute; /* Absolutely positioned */
+	width: fit-content; /* Width fits its content */
+}
+
+/* Styles for the diary icon images */
+.diary-icon img {
+	height: 20px; /* Fixed height */
+	cursor: pointer; /* Pointer cursor on hover */
+	transition: transform 0.3s ease-out; /*smooth transition*/
+}
+
+
+.diary-icon img:hover {
+	transform: translateY(-2px);/*move up 5 pixel*/
+}
+
+/* Styles for the diary input */
+.diary-input {
+	color: black; /* Text color */
+}

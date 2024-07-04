@@ -1,0 +1,14 @@
+/* import side_bar_tablet css  */
+@import url("/components/tablet_components/sidebar_tablet/sidebar_tablet.css");
+
+
+/* responsive header on tablet */
+@media (max-width:1025px){
+	.header-background{
+		height: 34px;/* set header background to 34px height */
+	}
+	.header-text-desktop{
+		font-size: 20px;/* set header text fontsize to 20px */
+		margin-left: 8vh ;/* align header text to the middle of the header */
+	}
+}

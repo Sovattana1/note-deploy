@@ -1,0 +1,21 @@
+@media(max-width:1025px){
+	/* set side bar width to 120px */
+	.side-bar-background{
+		width: 120px;
+	}
+	/* set text list fontsize inside the side bar to 15px */
+	.add-note-list-and-grid-view{
+		font-size: 15px;
+	}
+	/* set side bar list margin left 20px */
+	.list_side_bar li{
+		margin-left: 22px;
+	}
+	/* set the side bar icon to 80 height */
+	#icon-side-bar {
+		height: 80px; /* Set the height of the icon */
+		margin-left: 20px;
+		pointer-events: none;
+		transform: rotateY(180deg); /* rotate icon 180 degree*/
+	}
+}
