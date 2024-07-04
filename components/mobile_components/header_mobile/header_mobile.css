@@ -1,5 +1,5 @@
-@import url("/components/mobile_components/diary_entries_mobile/diary_entries_mobile.css");
-@import url("/components/mobile_components/diary_entries_mobile/diary_entries_mobile_modal.css");
+@import url("../diary_entries_mobile/diary_entries_mobile.css");
+@import url("../diary_entries_mobile/diary_entries_mobile_modal.css");
 @media (max-width: 767px) {
 	.side-bar {
 		display: none; /* Hide the sidebar */
