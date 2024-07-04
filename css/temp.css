@@ -1,0 +1,14 @@
+@import url('../components/desktop_components/diary_entries/diary/diary.css');
+@import url('../components/desktop_components/diary_entries/diary/edit_diary_modal.css');
+@import url('../components/desktop_components/header/header.css');
+@import url('../components/desktop_components/side_bar/side_bar_background/side_bar.css');
+@import url('../components/desktop_components/side_bar/side_bar_icon/side_bar_icon.css');
+@import url('../components/desktop_components/side_bar/side_bar_list/side_bar_list.css');
+@import url('../components/mobile_components/add_diary_button_mobile/add_diary_button_mobile.css');
+@import url('../components/mobile_components/diary_entries_mobile/diary_entries_mobile.css');
+@import url('../components/mobile_components/diary_entries_mobile/diary_entries_mobile_modal.css');
+@import url('../components/mobile_components/header_mobile/header_mobile.css');
+@import url('../components/tablet_components/diary_entries_tablet/diary_tablet.css');
+@import url('../components/tablet_components/diary_entries_tablet/edit_diary_tablet_modal.css');
+@import url('../components/tablet_components/header_tablet/header_tablet.css');
+@import url('../components/tablet_components/sidebar_tablet/sidebar_tablet.css');
