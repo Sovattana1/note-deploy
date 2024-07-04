@@ -1,0 +1,27 @@
+@media (max-width:767px){
+	.display-footer{
+		display: flex;
+		padding-left: 10px;
+		padding-right: 10px;
+		justify-content: space-between;
+		padding-top: 5px;
+	}
+	.footer{
+		height: 40px;
+	
+	}
+	#made-by{
+		font-size: 10px;
+		font-weight: bolder;
+		padding-bottom: 5px;
+	}
+	#creator{
+		font-size: 10px;
+		font-weight: bolder;
+	}
+	#anb-school{
+		margin-top: 5px;
+		height: 21px;
+		width: 60px;
+	}
+}

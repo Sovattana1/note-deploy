@@ -30,6 +30,16 @@
 	background-color: rgba(0, 0, 0, 0.1); /* Semi-transparent black background */
 	border: 1px solid rgba(68, 68, 68, 0.1); /* Border color and transparency */
 	box-shadow: 10px 10px 4px rgba(0, 0, 0, 0.25) ;
+	transition: transform 0.3s ease-out; /*smooth transition*/
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+.diary-container.deleting {
+	transform: translateY(-100%);
+	opacity: 0;
+}
+
+.diary-container:hover {
+	transform: translateY(-3px);/*move up 3 pixel*/
 }
 
 /* Styles for the title inside the diary header */
@@ -90,7 +100,7 @@
 
 
 .diary-icon img:hover {
-	transform: translateY(-2px);/*move up 5 pixel*/
+	transform: translateY(-2px);/*move up 2 pixel*/
 }
 
 /* Styles for the diary input */

@@ -21,3 +21,7 @@ diaryEntryDesktop()
 // import add diary btn feature on mobile
 import addDiaryBtnMobile from "../components/mobile_components/add_diary_button_mobile/add_diary_button_mobile.js";
 addDiaryBtnMobile()
+
+// import footer 
+import createFooter from "../components/desktop_components/footer/footer.js";
+createFooter

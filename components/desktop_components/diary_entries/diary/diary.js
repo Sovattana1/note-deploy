@@ -10,7 +10,7 @@ class DiaryManager {
         // Event listener for adding a new diary entry
         this.diaryAddButton = document.querySelector('#add-btn');
         this.diaryAddButton.addEventListener("click", this.addDiaryEntry.bind(this));
-        
+
         // Event listener for handling key events in the diary container
         this.diaryContainer.addEventListener('keydown', this.handleEnterKey.bind(this));
 
@@ -20,7 +20,7 @@ class DiaryManager {
             const newDiaryEntry = this.addDiaryEntry(); // Capture the new diary entry
             this.showWhenClickOnPlus(newDiaryEntry); // Show edit modal for the new entry
         });
-        
+
         this.showNotes(); // Initialize diary entries from localStorage on page load
     }
 
@@ -40,8 +40,8 @@ class DiaryManager {
 
     // Add a new diary entry to the UI and initialize event listeners
     addDiaryEntry() {
-        let newDiaryEntry = document.createElement("div");//create new div element 
-        newDiaryEntry.classList.add('diary-container');// add class to the element
+        let newDiaryEntry = document.createElement("div"); //create new div element 
+        newDiaryEntry.classList.add('diary-container'); // add class to the element
         newDiaryEntry.innerHTML = `
             <div class="diary-header">
                 <p contenteditable="false" class="title-desktop" id="title-desktop-diary">Title</p>
@@ -54,22 +54,32 @@ class DiaryManager {
                 </div>
             </p>
         `;
-        this.diaryContainer.appendChild(newDiaryEntry);//appendChild (new diary) to the diaryContainer
+        this.diaryContainer.appendChild(newDiaryEntry); //appendChild (new diary) to the diaryContainer
+
+        // Event listener for opening edit modal on diary container click
+        newDiaryEntry.addEventListener("click", (e) => {
+            if (e.target.classList.contains('delete-btn') || e.target.classList.contains('edit-btn')) {
+                return; // Do nothing if delete or edit button is clicked
+            }
+            const openModalDiary = new EditDiaryPopup(newDiaryEntry, this);
+            openModalDiary.openModal();
+        });
 
         // Initialize the edit popup for the new diary entry
-        const editButton = newDiaryEntry.querySelector('.edit-btn');//select edit button from newDiaryEntry in the same function
-        editButton.addEventListener("click", () => {
-            const modal = new EditDiaryPopup(newDiaryEntry, this);//call class when edit button is clicked
-            modal.openModal();//open diary modal
+        const editButton = newDiaryEntry.querySelector('.edit-btn'); //select edit button from newDiaryEntry in the same function
+        editButton.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent triggering the parent click event
+            const modal = new EditDiaryPopup(newDiaryEntry, this); //call class when edit button is clicked
+            modal.openModal(); //open diary modal
         });
 
         // Event listener for deleting the diary entry
-        const deleteBtn = newDiaryEntry.querySelector('.delete-btn');//select delete button from newDiaryEntry in the same function
-        deleteBtn.addEventListener("click", () => {
-            newDiaryEntry.remove();//remove diary entry from the UI when click
-            this.updateStorage();//after deleted updated storage
+        const deleteBtn = newDiaryEntry.querySelector('.delete-btn'); //select delete button from newDiaryEntry in the same function
+        deleteBtn.addEventListener("click", (e) => {
+            e.stopPropagation(); // Prevent triggering the parent click event
+            this.removeDiaryEntryWithAnimation(newDiaryEntry); //remove diary entry from the UI with animation
         });
-        
+
         // Event listener for updating storage when content is edited
         newDiaryEntry.addEventListener("input", () => {
             this.updateStorage();
@@ -78,7 +88,16 @@ class DiaryManager {
         this.updateStorage(); // Save the new entry to localStorage
         return newDiaryEntry; // Return the new diary entry DOM element
     }
-    
+
+    // Remove diary entry with animation
+    removeDiaryEntryWithAnimation(diaryEntry) {
+        diaryEntry.classList.add('removing'); // Add class to trigger CSS transition
+        diaryEntry.addEventListener('transitionend', () => {
+            diaryEntry.remove(); // Remove the diary entry from the DOM after animation ends
+            this.updateStorage(); // Update localStorage after removal
+        });
+    }
+
     // Show edit modal when clicking on the plus button (mobile)
     showWhenClickOnPlus(newDiaryEntry) {
         const modal = new EditDiaryPopup(newDiaryEntry, this);
@@ -88,22 +107,35 @@ class DiaryManager {
     // Add event listeners to existing diary entries for edit and delete buttons
     addEventListenersToDiaryEntries() {
         // Event listener for edit button on existing diary entries
-        const editButtons = this.diaryContainer.querySelectorAll('.edit-btn');//select element from diary container
-        editButtons.forEach(editButton => {//work on every existed diary
-            editButton.addEventListener("click", () => {
-                const diaryEntry = editButton.closest('.diary-container');//select the closest diary element
-                const modal = new EditDiaryPopup(diaryEntry, this);//call EditDiary class for funtionality
-                modal.openModal();//open edit modal
+        const editButtons = this.diaryContainer.querySelectorAll('.edit-btn'); //select element from diary container
+        editButtons.forEach(editButton => { //work on every existed diary
+            editButton.addEventListener("click", (e) => {
+                e.stopPropagation(); // Prevent triggering the parent click event
+                const diaryEntry = editButton.closest('.diary-container'); //select the closest diary element
+                const modal = new EditDiaryPopup(diaryEntry, this); //call EditDiary class for funtionality
+                modal.openModal(); //open edit modal
             });
         });
 
         // Event listener for delete button on existing diary entries
         const deleteButtons = this.diaryContainer.querySelectorAll('.delete-btn');
         deleteButtons.forEach(deleteBtn => {
-            deleteBtn.addEventListener("click", () => {
+            deleteBtn.addEventListener("click", (e) => {
+                e.stopPropagation(); // Prevent triggering the parent click event
                 const diaryEntry = deleteBtn.closest('.diary-container');
-                diaryEntry.remove(); // Remove from UI
-                this.updateStorage(); // Update localStorage
+                this.removeDiaryEntryWithAnimation(diaryEntry); //remove diary entry from the UI with animation
+            });
+        });
+
+        // Event listener for opening edit modal on diary container click
+        const diaryContainers = this.diaryContainer.querySelectorAll('.diary-container');
+        diaryContainers.forEach(diaryContainer => {
+            diaryContainer.addEventListener("click", (e) => {
+                if (e.target.classList.contains('delete-btn') || e.target.classList.contains('edit-btn')) {
+                    return; // Do nothing if delete or edit button is clicked
+                }
+                const openModalDiary = new EditDiaryPopup(diaryContainer, this);
+                openModalDiary.openModal();
             });
         });
     }
@@ -221,7 +253,6 @@ class EditDiaryPopup {
         }
     }
 }
-
 
 // Initialize diary entry functionality when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {

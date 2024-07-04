@@ -2,6 +2,7 @@
 	/* set side bar width to 120px */
 	.side-bar-background{
 		width: 120px;
+		position: fixed;
 	}
 	/* set text list fontsize inside the side bar to 15px */
 	.add-note-list-and-grid-view{
