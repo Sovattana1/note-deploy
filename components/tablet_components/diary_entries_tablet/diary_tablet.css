@@ -1,4 +1,4 @@
-@import url("/components/tablet_components/diary_entries_tablet/edit_diary_tablet_modal.css");
+@import url("./components/tablet_components/diary_entries_tablet/edit_diary_tablet_modal.css");
 
 @media (max-width:1025px){
 	.diary-entries-grid-wrapper {

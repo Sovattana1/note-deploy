@@ -1,5 +1,5 @@
 /* import side_bar_tablet css  */
-@import url("/components/tablet_components/sidebar_tablet/sidebar_tablet.css");
+@import url("./components/tablet_components/sidebar_tablet/sidebar_tablet.css");
 
 
 /* responsive header on tablet */
