@@ -160,7 +160,7 @@ class EditDiaryPopup {
         const date = this.diaryEntry.querySelector(".date-grit-desktop").textContent.trim();
         const content = this.diaryEntry.querySelector(".display-diary").textContent.trim();
         modalContainer.querySelector(".title-desktop").textContent = title;
-        modalContainer.querySelector(".date-grit-desktop").valueAsDate = new Date(date);
+        modalContainer.querySelector(".date-grit-desktop").value = this.formatDateForInput(new Date(date));
         modalContainer.querySelector(".display-diary-modal").textContent = content;
 
         // Event listener for 'Done' button to save changes
@@ -171,14 +171,24 @@ class EditDiaryPopup {
         document.addEventListener('keydown', this.handleEnterKey.bind(this));
     }
 
+    // Format date to 'yyyy-mm-dd' for input[type="date"]
+    formatDateForInput(date) {
+        const year = date.getFullYear();
+        const month = String(date.getMonth() + 1).padStart(2, '0');
+        const day = String(date.getDate()).padStart(2, '0');
+        return `${year}-${month}-${day}`;
+    }
+
     // Save edited content and update diary entry and localStorage
     saveContent() {
         const titleModal = document.querySelector("#title-desktop-diary-modal").textContent;
-        const dateModal = document.querySelector("#date-desktop-diary-modal").valueAsDate;
+        const dateModal = document.querySelector("#date-desktop-diary-modal").value;
         const contentModal = document.querySelector(".display-diary-modal").textContent;
 
-        // Format the date to your desired format, e.g., 'dd/mm/yyyy'
-        const formattedDate = `${dateModal.getDate()}/${dateModal.getMonth() + 1}/${dateModal.getFullYear()}`;
+        // Convert date from 'yyyy-mm-dd' to 'dd/mm/yyyy'
+        const [year, month, day] = dateModal.split('-');
+        const formattedDate = `${day}/${month}/${year}`;
+
         // Update diary entry with edited content
         this.diaryEntry.querySelector(".title-desktop").textContent = titleModal;
         this.diaryEntry.querySelector(".date-grit-desktop").textContent = formattedDate;
@@ -211,6 +221,7 @@ class EditDiaryPopup {
         }
     }
 }
+
 
 // Initialize diary entry functionality when DOM is fully loaded
 document.addEventListener('DOMContentLoaded', () => {
