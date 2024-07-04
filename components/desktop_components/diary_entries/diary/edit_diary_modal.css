@@ -92,7 +92,3 @@
 }
 
 /* Optional: Custom styles for the input when focused */
-#date-desktop-diary-modal:focus {
-    outline: none; /* Remove default focus outline */
-    box-shadow: none; /* Remove default focus box shadow */
-}
