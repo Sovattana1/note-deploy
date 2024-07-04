@@ -5,8 +5,9 @@
 		margin: 0 auto; /* Center the grid wrapper horizontally */
 		max-width: 1010px; /* Maximum width of the grid wrapper */
 		justify-content: center; /* Center content horizontally */
+		
 	}
-
+	
 	/* Styles for the diary entries grid */
 	.diary-entries-grid {
 		gap: 20px; /* Uniform gap between rows and columns */
@@ -14,6 +15,7 @@
 		max-width: 1010px; /* Maximum width of the grid */
 		margin: 100px auto 0; /* Center the grid and add top margin */
 		grid-template-columns: repeat(2, 1fr); /* Grid with 2 equal columns */
+		margin-bottom: 50px;
 	}
 
 	/* Styles for each diary container */
