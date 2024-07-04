@@ -49,8 +49,8 @@ class DiaryManager {
             </div>
             <p contenteditable="false" class="display-diary">
                 <div class="diary-icon">
-                    <img src="/public/diary_icon/bin.png" draggable="false" class="delete-btn">
-                    <img src="/public/diary_icon/edit-246-32.png" draggable="false" class="edit-btn">
+                    <img src="./public/diary_icon/bin.png" draggable="false" class="delete-btn">
+                    <img src="./public/diary_icon/edit-246-32.png" draggable="false" class="edit-btn">
                 </div>
             </p>
         `;
